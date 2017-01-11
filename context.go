@@ -15,7 +15,7 @@ type CurrentUser interface {
 //	'Context' is ec context, which is used for many ec components, used to share infoation between them
 type Context struct {
 	Request     *http.Request
-	Writer      *http.ResponseWriter
+	Writer      http.ResponseWriter
 	ResourceID  string
 	Config      *Config
 	Roles       []string
