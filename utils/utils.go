@@ -123,7 +123,7 @@ func Stringify(object interface{}) string {
 		return obj.stringify()
 	}
 
-	scope := gorm.Scope{Value, object}
+	scope := gorm.Scope{Value: object}
 	for _, column := range []string{"Name", "Title", "Code"} {
 		if field, ok := scope.FieldByName(column); ok {
 			result := field.Field.Interface()
@@ -144,13 +144,13 @@ func Stringify(object interface{}) string {
 		return fmt.Sprintf("%v#%v", scope.GetModelStruct().ModelType.Name(), scope.PrimaryKeyValue())
 	}
 
-	return fmt.Sprintf(reflect.Indirect(reflect.ValueOf(object)).Interface())
+	return fmt.Sprint(reflect.Indirect(reflect.ValueOf(object)).Interface())
 }
 
 //	'ModelType' get value's model type
 func ModelType(value interface{}) reflect.Type {
-	reflectType := reflect.Indirect(reflect.ValueOf(value).Type())
-	for reflectType.Kind() == reflect.Ptr || reflect.Kind == reflect.Slice {
+	reflectType := reflect.Indirect(reflect.ValueOf(value)).Type()
+	for reflectType.Kind() == reflect.Ptr || reflectType.Kind() == reflect.Slice {
 		reflectType = reflectType.Elem()
 	}
 
@@ -177,6 +177,7 @@ func ParseTagOption(str string) map[string]string {
 //	'ExistWithMsg' debug error messages and print stack
 func ExistWithMsg(msg interface{}, value ...interface{}) {
 	fmt.Printf("\n"+filenameWithLineNum()+"\n"+fmt.Sprint(msg)+"\n", value...)
+	debug.PrintStack()
 }
 
 //	'FileServer' file server that disabled file listing
@@ -221,7 +222,7 @@ var GetLocale = func(context *TM_EC.Context) string {
 	if locale := context.Request.URL.Query().Get("locale"); locale != "" {
 		if context.Writer != nil {
 			context.Request.Header.Set("Locale", locale)
-			SetCookie(http.Cookie{Name: "locale", Value: locale, Expires: time.Now().Add(1, 0, 0)}, context)
+			SetCookie(http.Cookie{Name: "locale", Value: locale, Expires: time.Now().AddDate(1, 0, 0)}, context)
 		}
 
 		return locale
