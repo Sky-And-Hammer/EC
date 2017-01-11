@@ -1,4 +1,4 @@
-package main
+package router
 
 import (
 	"net/http"
@@ -15,8 +15,8 @@ var wcRouter *wildcardRouter.WildcardRouter
 func main() {
 	if rootMux == nil {
 		router := gin.Default()
-		router.Use(func (ctx *gin.Context) {
-			tx := db.
+		router.Use(func(ctx *gin.Context) {
+			// tx := db.
 		})
 	}
 }
