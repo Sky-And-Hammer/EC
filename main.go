@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"strings"
+// "fmt"
+// "net/http"
+// "strings"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.Handler("/")
+	// mux := http.NewServeMux()
+	// mux.Handler("/")
 }
