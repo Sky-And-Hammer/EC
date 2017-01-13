@@ -33,8 +33,8 @@ func (errs Errors) HasError() bool {
 	return len(errs.errors) != 0
 }
 
-//	'getErrors'
-func (errs Errors) getErrors() []error {
+//	'GetErrors'
+func (errs Errors) GetErrors() []error {
 	return errs.getErrors()
 }
 
