@@ -35,7 +35,7 @@ func (errs Errors) HasError() bool {
 
 //	'GetErrors'
 func (errs Errors) GetErrors() []error {
-	return errs.getErrors()
+	return errs.errors
 }
 
 type errorsInterface interface {
