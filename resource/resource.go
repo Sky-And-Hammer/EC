@@ -24,7 +24,7 @@ type Resourcer interface {
 }
 
 //	'ConfigureReouseceBeforeInitializeInterface' if a struct implemented this interface, it will be called before everything when create a resource with the struct
-type ConfigureReouseceBeforeInitializeInterface interface {
+type ConfigureResourceBeforeInitializeInterface interface {
 	ConfigureECResourceBeforeInitialize(Resource)
 }
 
