@@ -75,7 +75,7 @@ func (meta Meta) GetName() string {
 }
 
 //	'getFieldName' get meta's field name
-func (meta Meta) getFieldName() string {
+func (meta Meta) GetFieldName() string {
 	return meta.FieldName
 }
 
