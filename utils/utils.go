@@ -175,7 +175,7 @@ func ParseTagOption(str string) map[string]string {
 }
 
 //	'ExistWithMsg' debug error messages and print stack
-func ExistWithMsg(msg interface{}, value ...interface{}) {
+func ExitWithMsg(msg interface{}, value ...interface{}) {
 	fmt.Printf("\n"+filenameWithLineNum()+"\n"+fmt.Sprint(msg)+"\n", value...)
 	debug.PrintStack()
 }
