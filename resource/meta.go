@@ -133,7 +133,7 @@ func (meta *Meta) SetPermission(permission *roles.Permission) {
 //	'PerInitialize' when will be run beform initialize, used to fill some basic necessary information
 func (meta *Meta) PerInitialize() error {
 	if meta.Name == "" {
-		utils.ExistWithMsg("Meta should have name: %v", reflect.TypeOf(meta))
+		utils.ExitWithMsg("Meta should have name: %v", reflect.TypeOf(meta))
 	} else if meta.FieldName == "" {
 		meta.FieldName = meta.Name
 	}
@@ -206,7 +206,7 @@ func (meta *Meta) Initialize() error {
 				return ""
 			}
 		} else {
-			utils.ExistWithMsg("Meta %v is not supported for resource %v, no 'Valuer' configured for it", meta.FieldName, reflect.TypeOf(meta.Resource.GetResource().Value))
+			utils.ExitWithMsg("Meta %v is not supported for resource %v, no 'Valuer' configured for it", meta.FieldName, reflect.TypeOf(meta.Resource.GetResource().Value))
 		}
 	}
 
@@ -334,7 +334,7 @@ func (meta *Meta) Initialize() error {
 							var buffer = bytes.NewBufferString("")
 							json.NewEncoder(buffer).Encode(value)
 							if err := json.NewDecoder(strings.NewReader(buffer.String())).Decode(field.Addr().Interface()); err != nil {
-								utils.ExistWithMsg("Can't set value %v to %v [meta %v]", reflect.TypeOf(value), field.Type(), meta)
+								utils.ExitWithMsg("Can't set value %v to %v [meta %v]", reflect.TypeOf(value), field.Type(), meta)
 							}
 						}
 					}
