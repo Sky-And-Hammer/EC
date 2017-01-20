@@ -25,12 +25,12 @@ type Resourcer interface {
 
 //	'ConfigureReouseceBeforeInitializeInterface' if a struct implemented this interface, it will be called before everything when create a resource with the struct
 type ConfigureResourceBeforeInitializeInterface interface {
-	ConfigureECResourceBeforeInitialize(Resource)
+	ConfigureECResourceBeforeInitialize(Resourcer)
 }
 
 //	'ConfigureResourceInterface' if a struct implemented this interface, it will be called after configured by user
 type ConfigureResourceInterface interface {
-	ConfigureECResource(Resource)
+	ConfigureECResource(Resourcer)
 }
 
 //	'Resource' is a struct that including basic definition of EC resource
