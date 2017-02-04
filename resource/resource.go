@@ -75,7 +75,7 @@ func (res *Resource) AddValidator(fc func(interface{}, *MetaValues, *TM_EC.Conte
 }
 
 //	'addProcessor' add processor to resource, it is used to process data before creating, updating, will rollback the change if it return any error
-func (res *Resource) addProcessor(fc func(interface{}, *MetaValues, *TM_EC.Context) error) {
+func (res *Resource) AddProcessor(fc func(interface{}, *MetaValues, *TM_EC.Context) error) {
 	res.Processors = append(res.Processors, fc)
 }
 
